@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control 
+    namespace="novalogica" 
+    constructor="AuditHistory" 
+    version="0.0.1" 
+    display-name-key="AuditHistory" 
+    description-key="AuditHistory description" 
+    control-type="virtual" 
+  >
+    <property 
+      name="boundedField" 
+      display-name-key="Bounded Field" 
+      description-key="Field where the pcf will be displayed" 
+      of-type="SingleLine.Text" 
+      usage="bound" 
+      required="true" 
+    />
+
+     <property 
+      name="primaryColor" 
+      display-name-key="Primary Color" 
+      description-key="Primary color for audit history" 
+      of-type="SingleLine.Text" 
+      usage="input" 
+      required="false" 
+    />
+
+    <property 
+      name="accentColor" 
+      display-name-key="Accent Color" 
+      description-key="accent color for audit history" 
+      of-type="SingleLine.Text" 
+      usage="input" 
+      required="false" 
+    />
+    
+    <resources>
+      <code path="index.ts" order="1"/>
+      <platform-library name="React" version="16.14.0" />
+      <platform-library name="Fluent" version="9.46.2" />
+      <resx path="strings/AuditTimeline.1033.resx" version="1.0.0" />
+    </resources>
+    <feature-usage>
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+    <external-service-usage enabled="false">
+    </external-service-usage>
+  </control>
+</manifest>
