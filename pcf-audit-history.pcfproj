@@ -8,7 +8,7 @@
   <Import Project="$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Pcf.props" Condition="Exists('$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Pcf.props')" />
 
   <PropertyGroup>
-    <Name>pcf-audit-timeline</Name>
+    <Name>pcf-audit-history</Name>
     <ProjectGuid>4f9fe161-1cf7-47b1-a106-0accb5e481db</ProjectGuid>
     <OutputPath>$(MSBuildThisFileDirectory)out\controls</OutputPath>
   </PropertyGroup>
