@@ -12,13 +12,15 @@ import { getFormattedValue } from "../utils/utils";
 const useDataverse = (context: ComponentFramework.Context<IInputs>) => {
     const record = useMemo(() => {
         return {
-            id: (context?.mode as any).contextInfo.entityId,
-            entityLogicalName: (context?.mode as any).contextInfo.entityTypeName
+            //@ts-expect-error - contextInfo is not recognized
+            id: context?.mode.contextInfo.entityId,
+            //@ts-expect-error - contextInfo is not recognized
+            entityLogicalName: context?.mode.contextInfo.entityTypeName
         } as Record
     }, [context?.mode]);
 
     const xrmService = useMemo(() => {
-        var service = XrmService.getInstance();
+        const service = XrmService.getInstance();
         service.setContext(context);
         return service;
     }, []);
@@ -54,15 +56,15 @@ const useDataverse = (context: ComponentFramework.Context<IInputs>) => {
             } ,
         };
 
-        var audit = await xrmService.execute(request) as History;
-        var attributes = await getAttributes();
+        const audit = await xrmService.execute(request) as History;
+        const attributes = await getAttributes();
 
         return audit.AuditDetailCollection.AuditDetails.map((detail: AuditDetail) => {
             const auditDetail = Object.keys(detail);
             const oldValue = auditDetail.includes("OldValue") ? Object.keys(detail.OldValue!) : [];
             const newValue = auditDetail.includes("NewValue") ? Object.keys(detail.NewValue!) : [];
 
-            var dataAttributes = attributes?.map((attributeMetadata) => {
+            const dataAttributes = attributes?.map((attributeMetadata) => {
                 if (
                     newValue.includes(attributeMetadata.logicalName) || 
                     oldValue.includes(`_${attributeMetadata.logicalName}_value`)
