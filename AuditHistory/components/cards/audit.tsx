@@ -67,13 +67,17 @@ export const AuditCard = ({ audit }: IProps) => {
                         </Caption1>
                     }
                 />
-                <Button 
-                    appearance="outline" 
-                    icon={<ArrowUndo16Regular fontSize={16} />}
-                    onClick={() => onRestoreAll(audit.attributes)}
-                >
-                    Restore All
-                </Button>
+                {
+                    audit.attributes && audit.attributes.length > 0 &&  (
+                        <Button 
+                            appearance="outline" 
+                            icon={<ArrowUndo16Regular fontSize={16} />}
+                            onClick={() => onRestoreAll(audit.attributes)}
+                        >
+                            Restore All
+                        </Button>
+                    )
+                }
             </div>
             {
                 audit.attributes && audit.attributes.length > 0 && (
