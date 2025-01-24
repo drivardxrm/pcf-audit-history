@@ -30,4 +30,18 @@
   <data name="restore-all" xml:space="preserve">
     <value>Alles Herstellen</value>
   </data>
+
+  <data name="delete-title" xml:space="preserve">
+    <value>Verwijdering bevestigen</value>
+  </data>
+  <data name="delete-description" xml:space="preserve">
+      <value>Weet u zeker dat u het of de geselecteerde record(s) wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.</value>
+  </data>
+  <data name="confirm-button" xml:space="preserve">
+      <value>Bevestigen</value>
+  </data>
+  <data name="cancel-button" xml:space="preserve">
+      <value>Annuleren</value>
+  </data>
+
 </root>

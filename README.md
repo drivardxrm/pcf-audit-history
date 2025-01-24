@@ -67,7 +67,7 @@ The control is localized to support the following languages:
 
 
 ## Todo:
-- Add confirmation dialog before restoring audit changes
+- Add confirmation dialog before restoring audit changes ✅
 - Implement paginated query to retrieve more audit changes
 - Add Date Range picker to filter audit changes by dates
 - Implement searchable attribute dropdown

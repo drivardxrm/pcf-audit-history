@@ -18,6 +18,7 @@ import { ControlContext } from "../../context/control-context";
 import { AuditAttributes } from "../table/table";
 import { useAudit } from "../../hooks/useAudit";
 import { Attribute } from "../../interfaces/attributes";
+import { useNavigation } from "../../hooks";
 
 const useStyles = makeStyles({
   card: {
@@ -35,10 +36,15 @@ export const AuditCard = ({ audit }: IProps) => {
     const styles = useStyles();
     const { context, formatting, resources } = useContext(ControlContext);
     const { restoreAllChanges, saveChanges } = useAudit(context);
+    const { openConfirmationDialog } = useNavigation(context);
 
-    const onRestoreAll = (attributes: Attribute[]) => {
-        restoreAllChanges(attributes)
-        saveChanges()
+    const onRestoreAll = async (attributes: Attribute[]) => {
+        const isConfirmed = await openConfirmationDialog()
+        
+        if(isConfirmed) {
+            restoreAllChanges(attributes)
+            saveChanges()
+        } 
     }
 
     return (

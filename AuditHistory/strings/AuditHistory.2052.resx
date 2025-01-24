@@ -30,4 +30,18 @@
   <data name="restore-all" xml:space="preserve">
     <value>恢复全部</value>
   </data>
+
+  <data name="delete-title" xml:space="preserve">
+    <value>确认删除</value>
+  </data>
+  <data name="delete-description" xml:space="preserve">
+      <value>您确定要删除所选记录吗？此操作无法撤销。</value>
+  </data>
+  <data name="confirm-button" xml:space="preserve">
+      <value>确认</value>
+  </data>
+  <data name="cancel-button" xml:space="preserve">
+      <value>取消</value>
+  </data>
+
 </root>

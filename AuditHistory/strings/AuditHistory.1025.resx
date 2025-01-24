@@ -30,4 +30,18 @@
   <data name="restore-all" xml:space="preserve">
     <value>استعادة الكل</value>
   </data>
+
+  <data name="delete-title" xml:space="preserve">
+    <value>تأكيد الحذف</value>
+  </data>
+  <data name="delete-description" xml:space="preserve">
+      <value>هل أنت متأكد أنك تريد حذف السجل أو السجلات المحددة؟ هذا الإجراء لا يمكن التراجع عنه.</value>
+  </data>
+  <data name="confirm-button" xml:space="preserve">
+      <value>تأكيد</value>
+  </data>
+  <data name="cancel-button" xml:space="preserve">
+      <value>إلغاء</value>
+  </data>
+
 </root>

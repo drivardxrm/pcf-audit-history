@@ -16,6 +16,7 @@ import { FilterContext } from "../../context/filter-context";
 import { ControlContext } from "../../context/control-context";
 import LookupField from "../lookup/lookup";
 import { useAudit } from "../../hooks/useAudit";
+import { useNavigation } from "../../hooks";
 
 const columns = [
 { key: "field" },
@@ -31,6 +32,7 @@ export const AuditAttributes = ({ attributes }: IProps) => {
     const { context, resources } = useContext(ControlContext);
     const { filter } = useContext(FilterContext);
     const { restore, saveChanges } = useAudit(context);
+    const { openConfirmationDialog } = useNavigation(context);
 
     const sortedAttributes = useMemo(() => {
         const filtered = attributes.filter((attr) => attr.displayName)
@@ -39,9 +41,13 @@ export const AuditAttributes = ({ attributes }: IProps) => {
         return filtered?.filter(attr => filter?.some((field) => field.logicalName === attr.logicalName))
     }, [attributes, filter])
 
-    const onRestore = (attribute: Attribute) => {
-        restore(attribute)
-        saveChanges()
+    const onRestore = async (attribute: Attribute) => {
+        const isConfirmed = await openConfirmationDialog()
+        
+        if(isConfirmed) {
+            restore(attribute)
+            saveChanges()
+        }
     }
 
 

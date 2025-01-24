@@ -30,4 +30,18 @@
   <data name="restore-all" xml:space="preserve">
     <value>Restaurer Tout</value>
   </data>
+
+  <data name="delete-title" xml:space="preserve">
+    <value>Confirmer la suppression</value>
+  </data>
+  <data name="delete-description" xml:space="preserve">
+      <value>Êtes-vous sûr de vouloir supprimer le ou les enregistrements sélectionnés ? Cette action est irréversible.</value>
+  </data>
+  <data name="confirm-button" xml:space="preserve">
+      <value>Confirmer</value>
+  </data>
+  <data name="cancel-button" xml:space="preserve">
+      <value>Annuler</value>
+  </data>
+
 </root>

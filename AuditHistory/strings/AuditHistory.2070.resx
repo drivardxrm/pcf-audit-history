@@ -30,4 +30,18 @@
   <data name="restore-all" xml:space="preserve">
     <value>Restaurar Tudo</value>
   </data>
+
+  <data name="delete-title" xml:space="preserve">
+    <value>Confirmar Eliminação</value>
+  </data>
+  <data name="delete-description" xml:space="preserve">
+      <value>Tem a certeza de que deseja eliminar o(s) registo(s) selecionado(s)? Esta ação não pode ser desfeita.</value>
+  </data>
+  <data name="confirm-button" xml:space="preserve">
+      <value>Confirmar</value>
+  </data>
+  <data name="cancel-button" xml:space="preserve">
+      <value>Cancelar</value>
+  </data>
+
 </root>
