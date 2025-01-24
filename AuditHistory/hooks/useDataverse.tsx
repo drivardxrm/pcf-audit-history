@@ -122,6 +122,10 @@ const useDataverse = (context: ComponentFramework.Context<IInputs>) => {
         });
     }
 
+    const loadMore = () => {
+
+    }
+
     const onRefresh = async () => {
         const audits = await getAudit(attributes);
         setAudits(audits);
