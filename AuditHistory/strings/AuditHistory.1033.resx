@@ -44,9 +44,9 @@
   </data>
 
   <data name="start-date" xml:space="preserve">
-    <value>Start</value>
+    <value>Start date</value>
   </data>
   <data name="end-date" xml:space="preserve">
-    <value>End</value>
+    <value>End date</value>
   </data>
 </root>
