@@ -17,24 +17,6 @@
       required="true" 
     />
 
-     <property 
-      name="primaryColor" 
-      display-name-key="Primary Color" 
-      description-key="Primary color for audit history" 
-      of-type="SingleLine.Text" 
-      usage="input" 
-      required="false" 
-    />
-
-    <property 
-      name="accentColor" 
-      display-name-key="Accent Color" 
-      description-key="accent color for audit history" 
-      of-type="SingleLine.Text" 
-      usage="input" 
-      required="false" 
-    />
-    
     <resources>
       <code path="index.ts" order="1"/>
       <platform-library name="React" version="16.14.0" />
