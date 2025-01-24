@@ -31,17 +31,16 @@
     <value>Ripristina Tutto</value>
   </data>
 
-  <data name="delete-title" xml:space="preserve">
-    <value>Conferma eliminazione</value>
+  <data name="restore-title" xml:space="preserve">
+    <value>Conferma ripristino</value>
   </data>
-  <data name="delete-description" xml:space="preserve">
-      <value>Sei sicuro di voler eliminare il record o i record selezionati? Questa azione non può essere annullata.</value>
+  <data name="restore-description" xml:space="preserve">
+      <value>Sei sicuro di voler ripristinare il record o i record selezionati? I valori attuali verranno sostituiti con quelli ripristinati.</value>
   </data>
   <data name="confirm-button" xml:space="preserve">
-      <value>Conferma</value>
+      <value>Ripristina</value>
   </data>
   <data name="cancel-button" xml:space="preserve">
       <value>Annulla</value>
   </data>
-
 </root>

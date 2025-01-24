@@ -30,11 +30,11 @@
     <value>Restore All</value>
   </data>
 
-  <data name="delete-title" xml:space="preserve">
-      <value>Confirm Deletion</value>
+  <data name="restore-title" xml:space="preserve">
+    <value>Confirm Restore</value>
   </data>
-  <data name="delete-description" xml:space="preserve">
-      <value>Are you sure you want to delete the selected record(s)? This action cannot be undone.</value>
+  <data name="restore-description" xml:space="preserve">
+      <value>Are you sure you want to restore the selected record(s)?</value>
   </data>
   <data name="confirm-button" xml:space="preserve">
       <value>Confirm</value>
@@ -42,6 +42,4 @@
   <data name="cancel-button" xml:space="preserve">
       <value>Cancel</value>
   </data>
-
-
 </root>

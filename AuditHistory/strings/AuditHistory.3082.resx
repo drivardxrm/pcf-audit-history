@@ -31,17 +31,16 @@
     <value>Restaurar Todo</value>
   </data>
 
-  <data name="delete-title" xml:space="preserve">
-    <value>Confirmar eliminación</value>
+  <data name="restore-title" xml:space="preserve">
+    <value>Confirmar restauración</value>
   </data>
-  <data name="delete-description" xml:space="preserve">
-      <value>¿Está seguro de que desea eliminar el o los registros seleccionados? Esta acción no se puede deshacer.</value>
+  <data name="restore-description" xml:space="preserve">
+      <value>¿Está seguro de que desea restaurar el o los registros seleccionados? Los valores actuales serán reemplazados por los valores restaurados.</value>
   </data>
   <data name="confirm-button" xml:space="preserve">
-      <value>Confirmar</value>
+      <value>Restaurar</value>
   </data>
   <data name="cancel-button" xml:space="preserve">
       <value>Cancelar</value>
   </data>
-
 </root>

@@ -22,8 +22,8 @@ export const useNavigation = (context: ComponentFramework.Context<IInputs>) => {
     const openConfirmationDialog = async (): Promise<boolean> => {
         const response = await context.navigation.openConfirmDialog(
             {
-                title: context.resources.getString("delete-title"),
-                text: context.resources.getString("delete-description"),
+                title: context.resources.getString("restore-title"),
+                text: context.resources.getString("restore-description"),
                 confirmButtonLabel: context.resources.getString("confirm-button"),
                 cancelButtonLabel: context.resources.getString("cancel-button"),
             }

@@ -31,17 +31,16 @@
     <value>すべて復元</value>
   </data>
 
-  <data name="delete-title" xml:space="preserve">
-    <value>削除の確認</value>
+  <data name="restore-title" xml:space="preserve">
+    <value>復元の確認</value>
   </data>
-  <data name="delete-description" xml:space="preserve">
-      <value>選択したレコードを削除してもよろしいですか？ この操作は元に戻せません。</value>
+  <data name="restore-description" xml:space="preserve">
+      <value>選択したレコードを復元してもよろしいですか？ 現在の値は復元された値に置き換えられます。</value>
   </data>
   <data name="confirm-button" xml:space="preserve">
-      <value>確認</value>
+      <value>復元</value>
   </data>
   <data name="cancel-button" xml:space="preserve">
       <value>キャンセル</value>
   </data>
-
 </root>

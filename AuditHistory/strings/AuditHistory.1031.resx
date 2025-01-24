@@ -31,11 +31,11 @@
     <value>Alles Wiederherstellen</value>
   </data>
 
-  <data name="delete-title" xml:space="preserve">
-    <value>Löschen bestätigen</value>
+  <data name="restore-title" xml:space="preserve">
+      <value>Wiederherstellung bestätigen</value>
   </data>
-  <data name="delete-description" xml:space="preserve">
-      <value>Sind Sie sicher, dass Sie den oder die ausgewählten Einträge löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.</value>
+  <data name="restore-description" xml:space="preserve">
+      <value>Sind Sie sicher, dass Sie den oder die ausgewählten Einträge wiederherstellen möchten?</value>
   </data>
   <data name="confirm-button" xml:space="preserve">
       <value>Bestätigen</value>
@@ -43,5 +43,4 @@
   <data name="cancel-button" xml:space="preserve">
       <value>Abbrechen</value>
   </data>
-
 </root>
