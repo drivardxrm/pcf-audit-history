@@ -8,7 +8,7 @@ export const useAudit = (context: ComponentFramework.Context<IInputs>) => {
     const restoreAllChanges = (attributes: Attribute[]) => attributes.forEach(restore);
 
     const restore = (attribute: Attribute) => {
-        formContext.getAttribute(attribute.logicalName).setValue(
+        formContext.getAttribute(attribute.logicalName)?.setValue(
             typeof attribute.oldValue == "object" ? 
                 [attribute.oldValue] 
                 : attribute.oldValue 
