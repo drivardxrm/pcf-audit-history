@@ -65,6 +65,10 @@ The control is localized to support the following languages:
 - Portuguese (Portugal) (2070)
 - Spanish (3082)
 
+
+## Todo:
+- Add confirmation dialog before restoring audit changes
+
 ## Contributions
 Contributions to improve or enhance this control are welcome. If you encounter issues or have feature requests, please create an issue or submit a pull request in the repository.
 
