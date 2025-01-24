@@ -1,5 +1,8 @@
 # Audit History Control PCF
 
+![Audit History - Accounts example](https://github.com/novalogica/pcf-audit-history/blob/main/screenshots/audit-history.png?raw=true)
+
+
 ## Overview
 The **Audit History Control** is a PowerApps Component Framework (PCF) control designed to streamline the process of managing and visualizing audit logs in Dynamics 365. This control simplifies tracking changes to records, visualizing field-level audit logs, and restoring previous values when needed.
 
@@ -37,6 +40,8 @@ The **Audit History Control** is a PowerApps Component Framework (PCF) control d
    - Change timestamps
 5. Use the sorting options to display logs in ascending or descending order.
 6. Restore changes for specific fields or all fields as needed.
+
+![Audit History - Filter attribute](https://github.com/novalogica/pcf-audit-history/blob/main/screenshots/audit-history-filter.png?raw=true)
 
 ## Configuration
 The control is configurable through a resource file containing localization strings. See the `strings` folder for `.resx` files supporting multiple languages.
