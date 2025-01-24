@@ -21,6 +21,8 @@ import { Audit } from "../../interfaces/audit";
 import { useContext } from "react";
 import { ControlContext } from "../../context/control-context";
 import { AuditAttributes } from "../table/table";
+import { useAudit } from "../../hooks/useAudit";
+import { Attribute } from "../../interfaces/attributes";
 
 const useStyles = makeStyles({
   card: {
@@ -35,47 +37,51 @@ interface IProps {
 }
 
 export const AuditCard = ({ audit }: IProps) => {
-  const styles = useStyles();
-  const { formatting } = useContext(ControlContext);
+    const styles = useStyles();
+    const { formatting } = useContext(ControlContext);
+    const { restoreAllChanges, saveChanges } = useAudit();
 
-  return (
-    <Card className={styles.card} style={{ padding: 24 }}>
-        <div style={
-                { 
+    const onRestoreAll = (attributes: Attribute[]) => {
+        restoreAllChanges(attributes)
+        saveChanges()
+    }
+
+    return (
+        <Card className={styles.card} style={{ padding: 24 }}>
+            <div style={{ 
                     display: 'flex', 
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                     alignItems: 'center'
-                }
-            }
-        >
-            <CardHeader
-                header={
-                    <Subtitle1 style={{ textTransform: 'capitalize' }}>
-                        <b>{audit.action}</b>
-                    </Subtitle1>
-                }
-                description={
-                    <Caption1>
-                        {formatting.formatDateShort(audit.date, true)} · {audit.user.name}
-                    </Caption1>
-                }
-            />
-            <Button 
-                appearance="outline" 
-                icon={
-                    <ArrowUndo16Regular fontSize={16} />
-                }
+                }}
             >
-                Restore
-            </Button>
-        </div>
-
-        <CardPreview>
-            <AuditAttributes attributes={audit.attributes} />
-        </CardPreview>
-        <CardFooter>
-        </CardFooter>
-    </Card>
-  );
+                <CardHeader
+                    header={
+                        <Subtitle2 style={{ textTransform: 'capitalize' }}>
+                            <b>{audit.operation}</b>
+                        </Subtitle2>
+                    }
+                    description={
+                        <Caption1>
+                            {formatting.formatDateShort(audit.timestamp, true)} · {audit.user.name}
+                        </Caption1>
+                    }
+                />
+                <Button 
+                    appearance="outline" 
+                    icon={<ArrowUndo16Regular fontSize={16} />}
+                    onClick={() => onRestoreAll(audit.attributes)}
+                >
+                    Restore All
+                </Button>
+            </div>
+            {
+                audit.attributes && audit.attributes.length > 0 && (
+                    <CardPreview>
+                        <AuditAttributes attributes={audit.attributes} />
+                    </CardPreview>
+                )
+            }
+        </Card>
+    );
 };

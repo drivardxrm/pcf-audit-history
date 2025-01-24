@@ -1,12 +1,13 @@
 import * as React from "react";
-import { FluentProvider, Skeleton, SkeletonItem, webLightTheme } from "@fluentui/react-components";
-
+import { FluentProvider, webLightTheme } from "@fluentui/react-components";
 import { IInputs } from "./generated/ManifestTypes";
 import { ControlContext } from "./context/control-context";
 import History from "./components/history";
 import { useDataverse } from "./hooks";
-import { useEffect, useState } from "react";
-import { Audit } from "./interfaces/audit";
+import Header from "./components/header/header";
+import { useMemo, useState } from "react";
+import { FilterContext } from "./context/filter-context";
+import { sortAudits } from "./utils/utils";
 
 interface IProps {
     context: ComponentFramework.Context<IInputs>
@@ -14,120 +15,54 @@ interface IProps {
 
 export default function App({ context }: IProps) {
     const { formatting, parameters, resources } = context;
-    const { getAudit } = useDataverse(context);
-    const [audits, setAudits] = useState<Audit[] | undefined>(undefined);
-    const [isLoading, setLoading] = useState(true);
+    const { isLoading, attributes, audits, onRefresh } = useDataverse(context);
+    const [filter, setFilter] = useState<string[]>([]);
+    const [order, setOrder] = useState<"descending" | "ascending">("descending");
 
-    useEffect(() => {
-        /*getAudit()
-            .then(setAudits)
-            .finally(() => setLoading(false))*/
+    const filteredAudits = useMemo(() => {
+        const filtered = !filter || filter.length <= 0 ? 
+            audits
+            : audits.filter((audit) => {
+                return audit.attributes.some((attr) => {
+                    return filter.some((field) => field === attr.logicalName)
+                })
+            });
 
-            setAudits([
-                {
-                    id: "1",
-                    action: "update",
-                    attributes: [
-                        {
-                            logicalName: "name",
-                            displayName: "Name",
-                            oldValue: "Nova Lógica",
-                            newValue: "novalogica"
-                        }
-                    ],
-                    date: new Date(),
-                    user: {
-                        id: "23323",
-                        name: "Mário Rocha",
-                        entityType: "systemuser"
-                    },
-                    hour: "19:50"
-                },
-                {
-                    id: "2",
-                    action: "create",
-                    attributes: [
-                        {
-                            logicalName: "accountnumber",
-                            displayName: "Account Number",
-                            oldValue: "",
-                            newValue: "ACC12345"
-                        },
-                        {
-                            logicalName: "telephone1",
-                            displayName: "Phone",
-                            oldValue: "",
-                            newValue: "+1 555-555-5555"
-                        }
-                    ],
-                    date: new Date(),
-                    user: {
-                        id: "45678",
-                        name: "Laura Mendes",
-                        entityType: "systemuser"
-                    },
-                    hour: "14:30"
-                },
-                {
-                    id: "3",
-                    action: "delete",
-                    attributes: [
-                        {
-                            logicalName: "emailaddress1",
-                            displayName: "Email",
-                            oldValue: "example@domain.com",
-                            newValue: ""
-                        },
-                        {
-                            logicalName: "fax",
-                            displayName: "Fax",
-                            oldValue: "+1 555-555-1234",
-                            newValue: ""
-                        }
-                    ],
-                    date: new Date(),
-                    user: {
-                        id: "78901",
-                        name: "Carlos Oliveira",
-                        entityType: "systemuser"
-                    },
-                    hour: "16:10"
-                },
-                {
-                    id: "4",
-                    action: "update",
-                    attributes: [
-                        {
-                            logicalName: "address1_city",
-                            displayName: "City",
-                            oldValue: "New York",
-                            newValue: "Los Angeles"
-                        },
-                        {
-                            logicalName: "address1_line1",
-                            displayName: "Street Address",
-                            oldValue: "123 Main St",
-                            newValue: "456 Elm St"
-                        }
-                    ],
-                    date: new Date(),
-                    user: {
-                        id: "11223",
-                        name: "Sofia Andrade",
-                        entityType: "systemuser"
-                    },
-                    hour: "11:20"
-                }
-            ])
-    }, [])
+        return sortAudits(filtered, order);
+    }, [audits, filter, order])
+
+    const filteredAttributes = useMemo(() => {
+        const data = !filter || filter.length <= 0 ? 
+                attributes
+                : attributes.filter((attr) => filter.some((field) => field == attr.logicalName))
+
+        return data.filter((item) => item.displayName)
+                .sort((a, b) => a.displayName!.localeCompare(b.displayName!))
+    }, [attributes, filter])
 
     return (
-        <FluentProvider theme={webLightTheme}>
-            <ControlContext.Provider value={{ formatting, parameters, resources }}>
-                {
-                    <History audits={audits}/>
-                }
-            </ControlContext.Provider>
-        </FluentProvider>
+        <div style={{ width: '100%'}}>
+            <FluentProvider theme={webLightTheme}>
+                <ControlContext.Provider value={{ context, formatting, parameters, resources }}>
+                    {
+                        !isLoading && <div style={{ display: 'flex', flexDirection: 'column', gap: 16, padding: 2 }}>
+                            <Header 
+                                order={order}
+                                attributes={attributes} 
+                                onFieldsChanged={setFilter} 
+                                onRefresh={onRefresh} 
+                                onAuditSortOrderChanged={setOrder}
+                            />
+
+                            <FilterContext.Provider value={{filter: filteredAttributes}}>
+                                <div style={{ maxHeight: '500px', overflowY: 'auto' }}>
+                                    <History audits={filteredAudits} />
+                                </div>
+                            </FilterContext.Provider>
+                        </div>
+                    }
+                </ControlContext.Provider>
+            </FluentProvider>
+        </div>
     );
 }

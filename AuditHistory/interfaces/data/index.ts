@@ -1,7 +1,7 @@
-import UpdatedData from "./updated.type";
-import Data from "./record.type";
-import GenericObject from "./generic-object.type";
-import History from "./history.type";
+import UpdatedData from "./updated";
+import Data from "./record";
+import GenericObject from "./generic-object";
+import History from "./history";
 
 export { 
     Data, 

@@ -1,14 +1,21 @@
+import { Audit } from "../interfaces/audit";
 import { GenericObject } from "../interfaces/data";
 
 export const getFormattedValue = (
     fields: string[], 
-    val: GenericObject | undefined, logicalName: string
+    value: GenericObject | undefined, logicalName: string
 ): string | number | boolean | object | undefined => {
-    if (!val) 
-        return val;
+    if (!value) 
+        return value;
 
     if (fields.includes(`${logicalName}@OData.Community.Display.V1.FormattedValue`))
-        return val[`${logicalName}@OData.Community.Display.V1.FormattedValue`];
+        return value[`${logicalName}@OData.Community.Display.V1.FormattedValue`];
     else
-        return val[logicalName];
+        return value[logicalName];
+}
+
+export const sortAudits = (audits: Audit[], order: 'ascending' | 'descending') => {
+    return order == "ascending" ?
+            audits.sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime())
+            : audits.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
 }
