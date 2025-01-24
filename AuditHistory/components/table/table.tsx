@@ -13,15 +13,14 @@ import { Attribute, Lookup } from "../../interfaces/attributes";
 import { ArrowUndo16Regular } from "@fluentui/react-icons";
 import { useContext, useMemo } from "react";
 import { FilterContext } from "../../context/filter-context";
-import { useNavigation } from "../../hooks";
 import { ControlContext } from "../../context/control-context";
 import LookupField from "../lookup/lookup";
 import { useAudit } from "../../hooks/useAudit";
 
 const columns = [
-  { key: "field" },
-  { key: "old-value" },
-  { key: "new-value" },
+{ key: "field" },
+{ key: "old-value" },
+{ key: "new-value" },
 ];
 
 interface IProps {
@@ -29,9 +28,9 @@ interface IProps {
 }
 
 export const AuditAttributes = ({ attributes }: IProps) => {
-    const { resources } = useContext(ControlContext);
+    const { context, resources } = useContext(ControlContext);
     const { filter } = useContext(FilterContext);
-    const { restore, saveChanges } = useAudit();
+    const { restore, saveChanges } = useAudit(context);
 
     const sortedAttributes = useMemo(() => {
         const filtered = attributes.filter((attr) => attr.displayName)

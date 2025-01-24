@@ -1,6 +1,7 @@
+import { IInputs } from "../generated/ManifestTypes";
 import { Attribute } from "../interfaces/attributes";
 
-export const useAudit = () => {
+export const useAudit = (context: ComponentFramework.Context<IInputs>) => {
     //@ts-expect-error - Method does not exist in PCF SDK
     const formContext = Xrm.Page;
 
@@ -12,11 +13,10 @@ export const useAudit = () => {
                 [attribute.oldValue] 
                 : attribute.oldValue 
         );
-
     }
 
-    const saveChanges = () => {
-        formContext.data.refresh(true);
+    const saveChanges = async () => {
+        await formContext.data.refresh(true);
     }
 
     return {

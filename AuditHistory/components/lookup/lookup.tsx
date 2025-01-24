@@ -20,7 +20,7 @@ const LookupField = ({ item }: IProps) => {
     return (
         <Link 
             style={{ 
-                backgroundColor: "rgb(207, 228, 250)",
+                backgroundColor: "rgb(235, 243, 252)",
                 color: "rgb(17, 94, 163)",
                 borderRadius: 4,
                 padding: 6,

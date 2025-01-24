@@ -8,7 +8,6 @@ const popupOtions = {
 }
 
 export const useNavigation = (context: ComponentFramework.Context<IInputs>) => {
-
     const openForm = async (entityName: string, id?: string): Promise<void> => {
         const pageInput = {
             entityName: entityName,
