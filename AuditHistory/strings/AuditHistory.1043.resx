@@ -4,6 +4,10 @@
   <data name="dropdown-placeholder" xml:space="preserve">
     <value>Kies velden om de auditgeschiedenis te filteren</value>
   </data>
+  <data name="no-results" xml:space="preserve">
+    <value>Geen auditgeschiedenis gevonden</value>
+  </data>
+
 
   <!-- Table -->
   <data name="field" xml:space="preserve">

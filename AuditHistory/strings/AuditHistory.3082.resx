@@ -4,6 +4,10 @@
   <data name="dropdown-placeholder" xml:space="preserve">
     <value>Selecciona campos para filtrar el historial de auditoría</value>
   </data>
+  <data name="no-results" xml:space="preserve">
+    <value>No se encontró historial de auditoría</value>
+  </data>
+
 
   <!-- Table -->
   <data name="field" xml:space="preserve">

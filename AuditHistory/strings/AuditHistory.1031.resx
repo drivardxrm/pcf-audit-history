@@ -4,6 +4,10 @@
   <data name="dropdown-placeholder" xml:space="preserve">
     <value>Wählen Sie Felder, um den Auditverlauf zu filtern</value>
   </data>
+  <data name="no-results" xml:space="preserve">
+    <value>Keine Audit-Historie gefunden</value>
+  </data>
+
 
   <!-- Table -->
   <data name="field" xml:space="preserve">

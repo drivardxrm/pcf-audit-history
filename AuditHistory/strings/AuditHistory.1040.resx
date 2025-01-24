@@ -4,6 +4,10 @@
   <data name="dropdown-placeholder" xml:space="preserve">
     <value>Scegli i campi per filtrare lo storico delle verifiche</value>
   </data>
+  <data name="no-results" xml:space="preserve">
+    <value>Nessuna cronologia di audit trovata</value>
+  </data>
+
 
   <!-- Table -->
   <data name="field" xml:space="preserve">

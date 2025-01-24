@@ -4,6 +4,10 @@
   <data name="dropdown-placeholder" xml:space="preserve">
     <value>اختر الحقول لتصفية سجل التدقيق</value>
   </data>
+  <data name="no-results" xml:space="preserve">
+    <value>لم يتم العثور على سجل تدقيق</value>
+  </data>
+
 
   <!-- Table -->
   <data name="field" xml:space="preserve">

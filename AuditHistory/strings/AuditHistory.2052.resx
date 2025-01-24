@@ -4,6 +4,10 @@
   <data name="dropdown-placeholder" xml:space="preserve">
     <value>选择字段以筛选审计历史</value>
   </data>
+  <data name="no-results" xml:space="preserve">
+    <value>未找到审计历史记录</value>
+  </data>
+
 
   <!-- Table -->
   <data name="field" xml:space="preserve">
