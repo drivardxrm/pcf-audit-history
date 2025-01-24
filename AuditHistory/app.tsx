@@ -57,7 +57,7 @@ export default function App({ context }: IProps) {
                             />
 
                             <FilterContext.Provider value={{filter: filteredAttributes}}>
-                                <div style={{ maxHeight: '600px', overflowY: 'auto' }}>
+                                <div style={{ maxHeight: '650px', overflowY: 'auto' }}>
                                     <History audits={filteredAudits} />
                                 </div>
                             </FilterContext.Provider>

@@ -69,7 +69,7 @@ const Header = ({ order, attributes, onFieldsChanged, onDateRangeSelected, onRef
     }
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
+        <div style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', gap: 8}}>
             <Select 
                 options={sortedAttributes}
                 isMulti={true}
@@ -80,7 +80,7 @@ const Header = ({ order, attributes, onFieldsChanged, onDateRangeSelected, onRef
                 placeholder={resources.getString("dropdown-placeholder")}
             />
             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
+                <div style={{ display: 'flex', flexDirection: 'row' }}>
                     <RangePicker
                         allowClear
                         placeholder={[resources.getString("start-date"), resources.getString("end-date")]}
