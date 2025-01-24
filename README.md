@@ -26,7 +26,7 @@ The **Audit History Control** is a PowerApps Component Framework (PCF) control d
 
 ## Installation
 1. Import the solution containing the PCF control into your Dynamics 365 environment.
-2. Configure the control on the desired entity forms or views.
+2. Configure the control on the desired entity forms.
 
 ## How to Use
 1. Add the **Audit History Control** to a form or view in Dynamics 365.
