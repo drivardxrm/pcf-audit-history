@@ -2,28 +2,28 @@
 <root>
   <!-- Placeholder -->
   <data name="dropdown-placeholder" xml:space="preserve">
-    <value>Choose fields to filter the audit history</value>
+    <value>选择字段以筛选审计历史</value>
   </data>
 
   <!-- Table -->
   <data name="field" xml:space="preserve">
-    <value>Field</value>
+    <value>字段</value>
   </data>
   <data name="old-value" xml:space="preserve">
-    <value>Old Value</value>
+    <value>旧值</value>
   </data>
   <data name="new-value" xml:space="preserve">
-    <value>New Value</value>
+    <value>新值</value>
   </data>
 
   <!-- Buttons -->
   <data name="sort-ascending" xml:space="preserve">
-    <value>Oldest First</value>
+    <value>最旧的优先</value>
   </data>
   <data name="sort-descending" xml:space="preserve">
-    <value>Newest First</value>
+    <value>最新的优先</value>
   </data>
   <data name="restore-all" xml:space="preserve">
-    <value>Restore All</value>
+    <value>恢复全部</value>
   </data>
 </root>

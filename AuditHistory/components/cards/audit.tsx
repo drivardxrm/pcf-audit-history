@@ -38,7 +38,7 @@ interface IProps {
 
 export const AuditCard = ({ audit }: IProps) => {
     const styles = useStyles();
-    const { formatting } = useContext(ControlContext);
+    const { formatting, resources } = useContext(ControlContext);
     const { restoreAllChanges, saveChanges } = useAudit();
 
     const onRestoreAll = (attributes: Attribute[]) => {
@@ -74,7 +74,7 @@ export const AuditCard = ({ audit }: IProps) => {
                             icon={<ArrowUndo16Regular fontSize={16} />}
                             onClick={() => onRestoreAll(audit.attributes)}
                         >
-                            Restore All
+                            {resources.getString("restore-all")}
                         </Button>
                     )
                 }

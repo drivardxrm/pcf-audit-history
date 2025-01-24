@@ -10,7 +10,7 @@ import {
   Button,
 } from "@fluentui/react-components";
 import { Attribute, Lookup } from "../../interfaces/attributes";
-import { ArrowReplyRegular, ArrowUndo16Regular } from "@fluentui/react-icons";
+import { ArrowUndo16Regular } from "@fluentui/react-icons";
 import { useContext, useMemo } from "react";
 import { FilterContext } from "../../context/filter-context";
 import { useNavigation } from "../../hooks";
@@ -19,9 +19,9 @@ import LookupField from "../lookup/lookup";
 import { useAudit } from "../../hooks/useAudit";
 
 const columns = [
-  { columnKey: "field", label: "Field" },
-  { columnKey: "oldValue", label: "Old Value" },
-  { columnKey: "newValue", label: "New Value" },
+  { key: "field" },
+  { key: "old-value" },
+  { key: "new-value" },
 ];
 
 interface IProps {
@@ -29,6 +29,7 @@ interface IProps {
 }
 
 export const AuditAttributes = ({ attributes }: IProps) => {
+    const { resources } = useContext(ControlContext);
     const { filter } = useContext(FilterContext);
     const { restore, saveChanges } = useAudit();
 
@@ -52,8 +53,8 @@ export const AuditAttributes = ({ attributes }: IProps) => {
                     <TableRow>
                     {
                         columns.map((column) => (
-                            <TableHeaderCell key={column.columnKey}>
-                                <b>{column.label}</b>
+                            <TableHeaderCell key={column.key}>
+                                <b>{resources.getString(column.key)}</b>
                             </TableHeaderCell>
                         ))
                     }

@@ -1,8 +1,9 @@
 import { Button, Dropdown, Option, OptionOnSelectData, SelectionEvents } from "@fluentui/react-components";
 import * as React from "react";
 import { Attribute } from "../../interfaces/attributes";
-import { useMemo } from "react";
+import { useContext, useMemo } from "react";
 import { ArrowClockwiseRegular, ArrowSortDownLinesRegular, ArrowSortUpLinesRegular } from '@fluentui/react-icons';
+import { ControlContext } from "../../context/control-context";
 
 interface IProps {
     order: 'descending' | 'ascending'
@@ -13,6 +14,8 @@ interface IProps {
 }
 
 const Header = ({ order, attributes, onFieldsChanged, onRefresh, onAuditSortOrderChanged }: IProps) => {
+    const { resources } = useContext(ControlContext);
+
     const onFieldSelected = (_: SelectionEvents, data: OptionOnSelectData) => {
         onFieldsChanged(data.selectedOptions);
     }
@@ -30,7 +33,7 @@ const Header = ({ order, attributes, onFieldsChanged, onRefresh, onAuditSortOrde
         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
             <div style={{ display: 'flex', flexDirection: 'row', gap: 8 }}>
                 <Dropdown 
-                    placeholder="Select fields" 
+                    placeholder={resources.getString("dropdown-placeholder")} 
                     onOptionSelect={onFieldSelected}
                     multiselect
                     clearable
@@ -50,7 +53,9 @@ const Header = ({ order, attributes, onFieldsChanged, onRefresh, onAuditSortOrde
                 onClick={onOrderChanged} appearance="transparent"
             >
                 {
-                    order == "ascending" ? "Newest First" : "Oldest First"
+                    order == "ascending" ? 
+                        resources.getString("sort-descending") 
+                        : resources.getString("sort-ascending")
                 }
             </Button>
         </div>

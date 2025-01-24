@@ -3,10 +3,10 @@
   <control 
     namespace="novalogica" 
     constructor="AuditHistory" 
-    version="0.0.1" 
-    display-name-key="AuditHistory" 
-    description-key="AuditHistory description" 
-    control-type="virtual" 
+    version="1.0.0" 
+    display-name-key="Audit History" 
+    description-key="Audit History control simplifies tracking changes to records, visualizing field-level audit logs, and restoring previous values when needed" 
+    control-type="virtual"
   >
     <property 
       name="boundedField" 
@@ -39,7 +39,28 @@
       <code path="index.ts" order="1"/>
       <platform-library name="React" version="16.14.0" />
       <platform-library name="Fluent" version="9.46.2" />
+            <!-- Arabic -->
+      <resx path="strings/AuditHistory.1025.resx" version="1.0.0" />
+      <!-- German -->
+      <resx path="strings/AuditHistory.1031.resx" version="1.0.0" />
+      <!-- English -->
       <resx path="strings/AuditHistory.1033.resx" version="1.0.0" />
+      <!-- French -->
+      <resx path="strings/AuditHistory.1036.resx" version="1.0.0" />
+      <!-- Italian -->
+      <resx path="strings/AuditHistory.1040.resx" version="1.0.0" />
+      <!-- Japanese -->
+      <resx path="strings/AuditHistory.1041.resx" version="1.0.0" />
+      <!-- Dutch -->
+      <resx path="strings/AuditHistory.1043.resx" version="1.0.0" />
+      <!-- Portuguese (Brazil) -->
+      <resx path="strings/AuditHistory.1046.resx" version="1.0.0" />
+      <!-- Chinese (Simplified) -->
+      <resx path="strings/AuditHistory.2052.resx" version="1.0.0" />
+      <!-- Portuguese (Portugal) -->
+      <resx path="strings/AuditHistory.2070.resx" version="1.0.0" />
+      <!-- Spanish -->
+      <resx path="strings/AuditHistory.3082.resx" version="1.0.0" />
     </resources>
     <feature-usage>
       <uses-feature name="Utility" required="true" />
