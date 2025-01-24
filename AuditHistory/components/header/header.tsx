@@ -79,7 +79,7 @@ const Header = ({ order, attributes, onFieldsChanged, onDateRangeSelected, onRef
                 styles={searchBoxStyles}
                 placeholder={resources.getString("dropdown-placeholder")}
             />
-            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 4}}>
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                     <RangePicker
                         allowClear
