@@ -60,6 +60,7 @@ const Header = ({ order, attributes, onFieldsChanged, onRefresh, onAuditSortOrde
                     closeMenuOnSelect={false}
                     onChange={onFieldSelected}
                     styles={searchBoxStyles}
+                    placeholder={resources.getString("dropdown-placeholder")}
                 />
                 <Button onClick={onRefresh} icon={<ArrowClockwiseRegular />} />
             </div>
