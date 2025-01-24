@@ -86,19 +86,19 @@ const Header = ({ order, attributes, onFieldsChanged, onDateRangeSelected, onRef
                         placeholder={[resources.getString("start-date"), resources.getString("end-date")]}
                         onChange={(_, dateStrings) => handleDateChange(dateStrings)}
                         />
-                    <Button onClick={onRefresh} icon={<ArrowClockwiseRegular />} />
+                    <Button
+                        icon={ order == "ascending" ? <ArrowSortDownLinesRegular /> : <ArrowSortUpLinesRegular />} 
+                        onClick={onOrderChanged} 
+                        appearance="outline"
+                        >
+                        {
+                            order == "ascending" ? 
+                            resources.getString("sort-descending") 
+                            : resources.getString("sort-ascending")
+                        }
+                    </Button>
                 </div>
-                <Button
-                    icon={ order == "ascending" ? <ArrowSortDownLinesRegular /> : <ArrowSortUpLinesRegular />} 
-                    onClick={onOrderChanged} 
-                    appearance="outline"
-                    >
-                    {
-                        order == "ascending" ? 
-                        resources.getString("sort-descending") 
-                        : resources.getString("sort-ascending")
-                    }
-                </Button>
+                <Button onClick={onRefresh} icon={<ArrowClockwiseRegular />} />
             </div>
         </div>
     );
