@@ -70,6 +70,7 @@ The control is localized to support the following languages:
 - Add confirmation dialog before restoring audit changes
 - Implement paginated query to retrieve more audit changes
 - Add Date Range picker to filter audit changes by dates
+- Implement searchable attribute dropdown
 
 ## Contributions
 Contributions to improve or enhance this control are welcome. If you encounter issues or have feature requests, please create an issue or submit a pull request in the repository.
