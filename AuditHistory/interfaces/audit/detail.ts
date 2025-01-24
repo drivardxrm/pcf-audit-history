@@ -1,8 +1,8 @@
 import { AuditRecord } from ".";
-import { GenericObject } from "../data";
+import { Dynamic } from "../data";
 
 export default interface AuditDetail {
-    OldValue?: GenericObject;
-    NewValue?: GenericObject;
+    OldValue?: Dynamic;
+    NewValue?: Dynamic;
     AuditRecord: AuditRecord;
 }
