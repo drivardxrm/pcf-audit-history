@@ -2,18 +2,13 @@ import * as React from "react";
 
 import {
   makeStyles,
-  Body1,
   Caption1,
   Button,
-  Label,
-  Title3,
   Subtitle2,
-  Subtitle1,
 } from "@fluentui/react-components";
-import { ArrowReplyRegular, ArrowUndo16Regular, ShareRegular } from "@fluentui/react-icons";
+import { ArrowUndo16Regular } from "@fluentui/react-icons";
 import {
   Card,
-  CardFooter,
   CardHeader,
   CardPreview,
 } from "@fluentui/react-components";
