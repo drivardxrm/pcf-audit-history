@@ -1,3 +1,3 @@
-export default interface GenericObject {
+export default interface Dynamic {
     [property: string]: string | number | object | boolean;
 }

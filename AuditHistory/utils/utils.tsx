@@ -1,9 +1,10 @@
 import { Audit } from "../interfaces/audit";
-import { GenericObject } from "../interfaces/data";
+import { Dynamic } from "../interfaces/data";
 
 export const getFormattedValue = (
     fields: string[], 
-    value: GenericObject | undefined, logicalName: string
+    value: Dynamic | undefined, 
+    logicalName: string
 ): string | number | boolean | object | undefined => {
     if (!value) 
         return value;
