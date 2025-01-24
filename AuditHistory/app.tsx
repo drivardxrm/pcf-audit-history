@@ -4,7 +4,7 @@ import { IInputs } from "./generated/ManifestTypes";
 import { ControlContext } from "./context/control-context";
 import History from "./components/history";
 import { useDataverse } from "./hooks";
-import Header from "./components/header/header";
+import Header, { DateRange } from "./components/header/header";
 import { useMemo, useState } from "react";
 import { FilterContext } from "./context/filter-context";
 import { sortAudits } from "./utils/utils";
@@ -18,6 +18,7 @@ export default function App({ context }: IProps) {
     const { isLoading, attributes, audits, onRefresh } = useDataverse(context);
     const [filter, setFilter] = useState<string[]>([]);
     const [order, setOrder] = useState<"descending" | "ascending">("descending");
+    const [dateRange, setDateRange] = useState<DateRange>({startDate: undefined, endDate: undefined});
 
     const filteredAudits = useMemo(() => {
         const filtered = !filter || filter.length <= 0 ? 
@@ -29,7 +30,7 @@ export default function App({ context }: IProps) {
             });
 
         return sortAudits(filtered, order);
-    }, [audits, filter, order])
+    }, [audits, filter, order, dateRange])
 
     const filteredAttributes = useMemo(() => {
         const data = !filter || filter.length <= 0 ? 
@@ -52,10 +53,11 @@ export default function App({ context }: IProps) {
                                 onFieldsChanged={setFilter} 
                                 onRefresh={onRefresh} 
                                 onAuditSortOrderChanged={setOrder}
+                                onDateRangeSelected={setDateRange}
                             />
 
                             <FilterContext.Provider value={{filter: filteredAttributes}}>
-                                <div style={{ maxHeight: '500px', overflowY: 'auto' }}>
+                                <div style={{ maxHeight: '600px', overflowY: 'auto' }}>
                                     <History audits={filteredAudits} />
                                 </div>
                             </FilterContext.Provider>

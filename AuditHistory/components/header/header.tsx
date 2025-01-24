@@ -2,16 +2,20 @@ import { Button, Dropdown, Option, OptionOnSelectData, SelectionEvents } from "@
 import * as React from "react";
 import Select, { ActionMeta, MultiValue, SingleValue, StylesConfig } from 'react-select'
 import { Attribute } from "../../interfaces/attributes";
-import { useContext, useMemo } from "react";
-import { ArrowClockwiseRegular, ArrowSortDownLinesRegular, ArrowSortUpLinesRegular } from '@fluentui/react-icons';
+import { useContext, useMemo, useState } from "react";
+import { ArrowClockwiseRegular, ArrowSortDownLinesRegular, ArrowSortUpLinesRegular, Calendar16Regular } from '@fluentui/react-icons';
 import { ControlContext } from "../../context/control-context";
+import { DatePicker } from 'antd';
+import * as dayjs from "dayjs";
+import { PickerLocale } from "antd/es/date-picker/generatePicker";
 
 interface IProps {
     order: 'descending' | 'ascending'
     attributes: Attribute[],
     onFieldsChanged: (attributes: string[]) => void,
     onRefresh: () => void;
-    onAuditSortOrderChanged: (order: 'descending' | 'ascending') => void
+    onAuditSortOrderChanged: (order: 'descending' | 'ascending') => void,
+    onDateRangeSelected: (dateRange: DateRange) => void
 }
 
 interface AttributeOption {
@@ -19,23 +23,37 @@ interface AttributeOption {
     label: string;
 }
 
+export interface DateRange {
+    startDate?: Date;
+    endDate?: Date;
+}
+
 const searchBoxStyles: StylesConfig<AttributeOption> = {
     container: (provided) => ({
         ...provided,
-        width: '400px',
+        width: '100%',
     }),
 };
 
-const Header = ({ order, attributes, onFieldsChanged, onRefresh, onAuditSortOrderChanged }: IProps) => {
-    const { resources } = useContext(ControlContext);
+const { RangePicker } = DatePicker;
 
-    const onFieldSelected = (options: SingleValue<AttributeOption> | MultiValue<AttributeOption>, actionMeta: ActionMeta<AttributeOption>) => {
+const Header = ({ order, attributes, onFieldsChanged, onDateRangeSelected, onRefresh, onAuditSortOrderChanged }: IProps) => {
+    const { resources } = useContext(ControlContext);
+    
+    const onFieldSelected = (options: SingleValue<AttributeOption> | MultiValue<AttributeOption>, _: ActionMeta<AttributeOption>) => {
         const selectedOptions = (options as MultiValue<AttributeOption>)?.map((o: {value: string, label: string}) => {
             return o.value
         });
 
         onFieldsChanged(selectedOptions);
     }
+
+    const handleDateChange = (dateStrings: [string, string]) => {
+        onDateRangeSelected({
+            startDate: new Date(dateStrings[0]),
+            endDate: new Date(dateStrings[1])
+        })
+    };
 
     const sortedAttributes = useMemo(() => {
         return attributes.filter((item) => item.displayName)
@@ -51,31 +69,39 @@ const Header = ({ order, attributes, onFieldsChanged, onRefresh, onAuditSortOrde
     }
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-            <div style={{ display: 'flex', flexDirection: 'row', gap: 8 }}>
-                <Select 
-                    options={sortedAttributes}
-                    isMulti={true}
-                    isClearable={true}
-                    closeMenuOnSelect={false}
-                    onChange={onFieldSelected}
-                    styles={searchBoxStyles}
-                    placeholder={resources.getString("dropdown-placeholder")}
-                />
-                <Button onClick={onRefresh} icon={<ArrowClockwiseRegular />} />
-            </div>
-            <Button
-                icon={ order == "ascending" ? <ArrowSortDownLinesRegular /> : <ArrowSortUpLinesRegular />} 
-                onClick={onOrderChanged} appearance="transparent"
-            >
-                {
-                    order == "ascending" ? 
+        <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
+            <Select 
+                options={sortedAttributes}
+                isMulti={true}
+                isClearable={true}
+                closeMenuOnSelect={false}
+                onChange={onFieldSelected}
+                styles={searchBoxStyles}
+                placeholder={resources.getString("dropdown-placeholder")}
+            />
+            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+                    <RangePicker
+                        allowClear
+                        placeholder={[resources.getString("start-date"), resources.getString("end-date")]}
+                        onChange={(_, dateStrings) => handleDateChange(dateStrings)}
+                        />
+                    <Button onClick={onRefresh} icon={<ArrowClockwiseRegular />} />
+                </div>
+                <Button
+                    icon={ order == "ascending" ? <ArrowSortDownLinesRegular /> : <ArrowSortUpLinesRegular />} 
+                    onClick={onOrderChanged} 
+                    appearance="outline"
+                    >
+                    {
+                        order == "ascending" ? 
                         resources.getString("sort-descending") 
                         : resources.getString("sort-ascending")
-                }
-            </Button>
+                    }
+                </Button>
+            </div>
         </div>
     );
 }
- 
+
 export default Header;
