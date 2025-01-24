@@ -111,7 +111,6 @@ const useDataverse = (context: ComponentFramework.Context<IInputs>) => {
             return {
                 id: detail.AuditRecord.auditid,
                 timestamp: new Date(detail.AuditRecord["createdon"]),
-                hour: detail.AuditRecord["createdon@OData.Community.Display.V1.FormattedValue"].split(" ")[1],
                 operation: detail.AuditRecord["action@OData.Community.Display.V1.FormattedValue"],
                 user: {
                     id: detail.AuditRecord._userid_value,
