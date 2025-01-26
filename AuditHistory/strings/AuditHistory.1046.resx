@@ -43,4 +43,11 @@
   <data name="cancel-button" xml:space="preserve">
       <value>Cancelar</value>
   </data>
+
+  <data name="start-date" xml:space="preserve">
+    <value>Data de início</value>
+  </data>
+  <data name="end-date" xml:space="preserve">
+    <value>Data de término</value>
+  </data>
 </root>
