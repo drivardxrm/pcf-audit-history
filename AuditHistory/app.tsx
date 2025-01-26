@@ -21,13 +21,23 @@ export default function App({ context }: IProps) {
     const [dateRange, setDateRange] = useState<DateRange>({startDate: undefined, endDate: undefined});
 
     const filteredAudits = useMemo(() => {
-        const filtered = !filter || filter.length <= 0 ? 
+        let filtered = !filter || filter.length <= 0 ? 
             audits
             : audits.filter((audit) => {
                 return audit.attributes.some((attr) => {
                     return filter.some((field) => field === attr.logicalName)
                 })
             });
+        
+            if (dateRange?.startDate && dateRange?.endDate) {
+                filtered = filtered.filter((item) => {
+                    const auditDate = new Date(item.timestamp);
+                    return (
+                        auditDate >= new Date(dateRange.startDate!) &&
+                        auditDate <= new Date(dateRange.endDate!)
+                    );
+                });
+            }
 
         return sortAudits(filtered, order);
     }, [audits, filter, order, dateRange])
