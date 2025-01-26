@@ -3,7 +3,7 @@
   <control 
     namespace="novalogica" 
     constructor="AuditHistory" 
-    version="1.0.3" 
+    version="1.0.4" 
     display-name-key="Audit History" 
     description-key="Audit History control simplifies tracking changes to records, visualizing field-level audit logs, and restoring previous values when needed" 
     control-type="virtual"

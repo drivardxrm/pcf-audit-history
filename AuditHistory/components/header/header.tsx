@@ -8,6 +8,7 @@ import { ControlContext } from "../../context/control-context";
 import { DatePicker } from 'antd';
 import * as dayjs from "dayjs";
 import { PickerLocale } from "antd/es/date-picker/generatePicker";
+import { isNullOrEmpty } from "../../utils/utils";
 
 interface IProps {
     order: 'descending' | 'ascending'
@@ -49,10 +50,9 @@ const Header = ({ order, attributes, onFieldsChanged, onDateRangeSelected, onRef
     }
 
     const handleDateChange = (dateStrings: [string, string]) => {
-        onDateRangeSelected({
-            startDate: new Date(dateStrings[0]),
-            endDate: new Date(dateStrings[1])
-        })
+        const startDate = isNullOrEmpty(dateStrings[0]) ? undefined : new Date(dateStrings[0]);
+        const endDate = isNullOrEmpty(dateStrings[1]) ? undefined : new Date(dateStrings[1]);
+        onDateRangeSelected({ startDate, endDate })
     };
 
     const sortedAttributes = useMemo(() => {
@@ -85,7 +85,7 @@ const Header = ({ order, attributes, onFieldsChanged, onDateRangeSelected, onRef
                         allowClear
                         placeholder={[resources.getString("start-date"), resources.getString("end-date")]}
                         onChange={(_, dateStrings) => handleDateChange(dateStrings)}
-                        />
+                    />
                     <Button
                         icon={ order == "ascending" ? <ArrowSortDownLinesRegular /> : <ArrowSortUpLinesRegular />} 
                         onClick={onOrderChanged} 
