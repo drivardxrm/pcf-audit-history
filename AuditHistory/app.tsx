@@ -30,11 +30,13 @@ export default function App({ context }: IProps) {
             });
         
             if (dateRange?.startDate && dateRange?.endDate) {
-                filtered = filtered.filter((item) => (
-                        item.timestamp >= new Date(dateRange.startDate!) &&
-                        item.timestamp <= new Date(dateRange.endDate!)
-                    )
-                );
+                const startDate = new Date(dateRange.startDate).setHours(0, 0, 0, 0);
+                const endDate = new Date(dateRange.endDate).setHours(0, 0, 0, 0);
+
+                filtered = filtered.filter((item) => {
+                    const auditDate = new Date(item.timestamp).setHours(0, 0, 0, 0);
+                    return auditDate >= startDate && auditDate <= endDate;
+                });
             }
 
         return sortAudits(filtered, order);
