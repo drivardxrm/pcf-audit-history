@@ -51,7 +51,9 @@ const Header = ({ order, attributes, onFieldsChanged, onDateRangeSelected, onRef
 
     const handleDateChange = (dateStrings: [string, string]) => {
         const startDate = isNullOrEmpty(dateStrings[0]) ? undefined : new Date(dateStrings[0]);
+        startDate?.setHours(0, 0, 0);
         const endDate = isNullOrEmpty(dateStrings[1]) ? undefined : new Date(dateStrings[1]);
+        startDate?.setHours(23, 59, 59);
         onDateRangeSelected({ startDate, endDate })
     };
 

@@ -18,7 +18,7 @@
     <!--Remove TargetFramework when this is available in 16.1-->
     <TargetFramework>net462</TargetFramework>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-    <!--<PcfBuildMode>production</PcfBuildMode>-->
+    <PcfBuildMode>production</PcfBuildMode>
   </PropertyGroup>
 
   <ItemGroup>
