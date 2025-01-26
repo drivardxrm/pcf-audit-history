@@ -32,16 +32,19 @@ The **Audit History Control** is a PowerApps Component Framework (PCF) control d
 1. Add the **Audit History Control** to a form or view in Dynamics 365.
 2. Open a record and access the audit history via the control.
 3. Use the dropdown to filter audit logs by specific fields (e.g., "Choose fields to filter the audit history").
-4. View detailed information, including:
+4. Use the date range picker to field audits in a date interval.
+5. View detailed information, including:
    - Field names
    - Old values
    - New values
    - User who made the change
    - Change timestamps
-5. Use the sorting options to display logs in ascending or descending order.
-6. Restore changes for specific fields or all fields as needed.
+6. Use the sorting options to display logs in ascending or descending order.
+7. Restore changes for specific fields or all fields as needed.
 
 ![Audit History - Filter attribute](https://github.com/novalogica/pcf-audit-history/blob/main/screenshots/audit-history-filter.png?raw=true)
+
+![Audit History - Combined Filter](https://github.com/novalogica/pcf-audit-history/blob/main/screenshots/audit-history-combined-filter.png?raw=true)
 
 ## Configuration
 The control is configurable through a resource file containing localization strings. See the `strings` folder for `.resx` files supporting multiple languages.
