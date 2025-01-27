@@ -47,12 +47,13 @@ const useDataverse = (context: ComponentFramework.Context<IInputs>) => {
             `api/data/v9.1/EntityDefinitions(LogicalName='${record.entityLogicalName}')/Attributes?$select=LogicalName,DisplayName&$filter=AttributeOf eq null&$orderby=DisplayName asc`,
         ) as EntityDefinition[];
 
-        return result.map((item: EntityDefinition) => {
-            return {
-                logicalName: item.LogicalName,
-                displayName: item.DisplayName.UserLocalizedLabel?.Label
-            }
-        });
+        return result.filter(item => item.LogicalName && !item.LogicalName.includes("_composite"))
+                    .map((item: EntityDefinition) => {
+                        return {
+                            logicalName: item.LogicalName,
+                            displayName: item.DisplayName.UserLocalizedLabel?.Label
+                        }
+                });
     }
 
     const getAudit = async (attributes: Attribute[]): Promise<Audit[]> => {

@@ -77,7 +77,7 @@ export const AuditAttributes = ({ attributes }: IProps) => {
                                 <TableCellLayout>
                                     {
                                         typeof attribute.oldValue == "object" ? 
-                                            <LookupField item={attribute.oldValue as Lookup} />
+                                            <LookupField item={attribute.oldValue as Lookup} isAuditField={true} />
                                             : attribute.oldValue ?? "-"
                                     }
                                 </TableCellLayout>
@@ -85,7 +85,7 @@ export const AuditAttributes = ({ attributes }: IProps) => {
                                 <TableCell>
                                     {
                                         typeof attribute.newValue == "object" ? 
-                                            <LookupField item={attribute.newValue as Lookup} />
+                                            <LookupField item={attribute.newValue as Lookup} isAuditField={true} />
                                         : attribute.newValue ?? "-"
                                     }
                                 </TableCell>

@@ -19,6 +19,7 @@ import { AuditAttributes } from "../table/table";
 import { useAudit } from "../../hooks/useAudit";
 import { Attribute } from "../../interfaces/attributes";
 import { useNavigation } from "../../hooks";
+import LookupField from "../lookup/lookup";
 
 const useStyles = makeStyles({
   card: {
@@ -64,9 +65,13 @@ export const AuditCard = ({ audit }: IProps) => {
                             </Subtitle2>
                         }
                         description={
-                            <Caption1>
-                                {formatting.formatDateShort(audit.timestamp, true)} · {audit.user.name}
-                            </Caption1>
+                            <div style={{ display: 'flex', flexDirection: 'row', gap: 4}}>
+                                <Caption1>
+                                    {formatting.formatDateShort(audit.timestamp, true)}
+                                </Caption1>
+                                <Caption1>·</Caption1>
+                                <LookupField item={audit.user} isAuditField={false} />
+                            </div>
                         }
                     />
                     {
