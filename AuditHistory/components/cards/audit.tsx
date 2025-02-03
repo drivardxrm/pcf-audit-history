@@ -36,15 +36,14 @@ interface IProps {
 export const AuditCard = ({ audit }: IProps) => {
     const styles = useStyles();
     const { context, formatting, resources } = useContext(ControlContext);
-    const { restoreAllChanges, saveChanges } = useAudit(context);
+    const { restoreChanges } = useAudit(context);
     const { openConfirmationDialog } = useNavigation(context);
 
     const onRestoreAll = async (attributes: Attribute[]) => {
         const isConfirmed = await openConfirmationDialog()
         
         if(isConfirmed) {
-            await restoreAllChanges(attributes)
-            await saveChanges()
+            await restoreChanges(attributes)
         } 
     }
 
