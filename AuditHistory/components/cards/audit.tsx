@@ -43,8 +43,8 @@ export const AuditCard = ({ audit }: IProps) => {
         const isConfirmed = await openConfirmationDialog()
         
         if(isConfirmed) {
-            restoreAllChanges(attributes)
-            saveChanges()
+            await restoreAllChanges(attributes)
+            await saveChanges()
         } 
     }
 

@@ -31,7 +31,7 @@ interface IProps {
 export const AuditAttributes = ({ attributes }: IProps) => {
     const { context, resources } = useContext(ControlContext);
     const { filter } = useContext(FilterContext);
-    const { restore, saveChanges } = useAudit(context);
+    const { restoreChanges } = useAudit(context);
     const { openConfirmationDialog } = useNavigation(context);
 
     const sortedAttributes = useMemo(() => {
@@ -45,8 +45,7 @@ export const AuditAttributes = ({ attributes }: IProps) => {
         const isConfirmed = await openConfirmationDialog()
         
         if(isConfirmed) {
-            restore(attribute)
-            saveChanges()
+            await restoreChanges([attribute])
         }
     }
 

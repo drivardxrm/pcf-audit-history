@@ -19,7 +19,6 @@ export default function History({ audits }: IHistoryProps) {
                     <AuditCard key={audit.id} audit={audit} />
                 ))
             }
-
             {
                 !audits || audits.length <= 0 && (
                     <div 

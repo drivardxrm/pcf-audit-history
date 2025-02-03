@@ -15,7 +15,7 @@ interface IProps {
 
 export default function App({ context }: IProps) {
     const { formatting, parameters, resources } = context;
-    const { isLoading, attributes, audits, onRefresh } = useDataverse(context);
+    const { isLoading, attributes, audits, record, onRefresh } = useDataverse(context);
     const [filter, setFilter] = useState<string[]>([]);
     const [order, setOrder] = useState<"descending" | "ascending">("descending");
     const [dateRange, setDateRange] = useState<DateRange>({startDate: undefined, endDate: undefined});
@@ -54,10 +54,10 @@ export default function App({ context }: IProps) {
     return (
         <div style={{ width: '100%'}}>
             <FluentProvider theme={webLightTheme}>
-                <ControlContext.Provider value={{ context, formatting, parameters, resources }}>
+                <ControlContext.Provider value={{ context, formatting, parameters, resources, record }}>
                     {
                         !isLoading && <div style={{ display: 'flex', flexDirection: 'column', gap: 16, padding: 2 }}>
-                            <Header 
+                            <Header
                                 order={order}
                                 attributes={attributes} 
                                 onFieldsChanged={setFilter} 

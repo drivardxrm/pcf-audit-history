@@ -132,7 +132,8 @@ const useDataverse = (context: ComponentFramework.Context<IInputs>) => {
         isLoading,
         attributes,
         audits,
-        onRefresh
+        onRefresh,
+        record
     }
 }
 

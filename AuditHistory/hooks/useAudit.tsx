@@ -1,18 +1,35 @@
+import { useContext } from "react";
+import { ControlContext } from "../context/control-context";
 import { IInputs } from "../generated/ManifestTypes";
-import { Attribute } from "../interfaces/attributes";
+import { Attribute, Lookup } from "../interfaces/attributes";
 
 export const useAudit = (context: ComponentFramework.Context<IInputs>) => {
+    const { record } = useContext(ControlContext);
+    
     //@ts-expect-error - Method does not exist in PCF SDK
     const formContext = Xrm.Page;
 
-    const restoreAllChanges = (attributes: Attribute[]) => attributes.forEach(restore);
-
-    const restore = (attribute: Attribute) => {
-        formContext.getAttribute(attribute.logicalName)?.setValue(
-            typeof attribute.oldValue == "object" ? 
-                [attribute.oldValue] 
-                : attribute.oldValue 
+    const restoreChanges = async (attributes: Attribute[]) => {
+        const mappedChanges = attributes.reduce<Record<string, string | number | object | boolean | null>>(
+            (acc, attr) => {
+                const name = attr.logicalName;
+                const value = attr.oldValue !== undefined
+                    ? typeof attr.oldValue === "object"
+                    ? [attr.oldValue]
+                    : attr.oldValue
+                    : null;
+            
+                acc[name] = value;
+                return acc;
+            }, {}
         );
+        
+        await restore(mappedChanges);
+        await saveChanges()
+    };
+
+    const restore = async (update: object) => {
+        return context.webAPI.updateRecord(record.entityLogicalName, record.id, update);
     }
 
     const saveChanges = async () => {
@@ -20,8 +37,6 @@ export const useAudit = (context: ComponentFramework.Context<IInputs>) => {
     }
 
     return {
-        restoreAllChanges,
-        restore,
-        saveChanges
+        restoreChanges
     }
 }
