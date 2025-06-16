@@ -19,21 +19,9 @@ export const useNavigation = (context: ComponentFramework.Context<IInputs>) => {
         await context.navigation.navigateTo(pageInput, popupOtions);
     }
 
-    const openConfirmationDialog = async (): Promise<boolean> => {
-        const response = await context.navigation.openConfirmDialog(
-            {
-                title: context.resources.getString("restore-title"),
-                text: context.resources.getString("restore-description"),
-                confirmButtonLabel: context.resources.getString("confirm-button"),
-                cancelButtonLabel: context.resources.getString("cancel-button"),
-            }
-        );
-
-        return response.confirmed;
-    }
+    
 
     return {
-        openForm,
-        openConfirmationDialog
+        openForm
     }
 }

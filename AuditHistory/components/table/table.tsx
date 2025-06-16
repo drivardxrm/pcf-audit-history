@@ -10,13 +10,11 @@ import {
   Button,
 } from "@fluentui/react-components";
 import { Attribute, Lookup } from "../../interfaces/attributes";
-import { ArrowUndo16Regular } from "@fluentui/react-icons";
 import { useContext, useMemo } from "react";
 import { FilterContext } from "../../context/filter-context";
 import { ControlContext } from "../../context/control-context";
 import LookupField from "../lookup/lookup";
-import { useAudit } from "../../hooks/useAudit";
-import { useNavigation } from "../../hooks";
+
 
 const columns = [
 { key: "field" },
@@ -31,8 +29,7 @@ interface IProps {
 export const AuditAttributes = ({ attributes }: IProps) => {
     const { context, resources } = useContext(ControlContext);
     const { filter } = useContext(FilterContext);
-    const { restoreChanges } = useAudit(context);
-    const { openConfirmationDialog } = useNavigation(context);
+
 
     const sortedAttributes = useMemo(() => {
         const filtered = attributes.filter((attr) => attr.displayName)
@@ -41,13 +38,7 @@ export const AuditAttributes = ({ attributes }: IProps) => {
         return filtered?.filter(attr => filter?.some((field) => field.logicalName === attr.logicalName))
     }, [attributes, filter])
 
-    const onRestore = async (attribute: Attribute) => {
-        const isConfirmed = await openConfirmationDialog()
-        
-        if(isConfirmed) {
-            await restoreChanges([attribute])
-        }
-    }
+
 
 
     return (
@@ -62,7 +53,7 @@ export const AuditAttributes = ({ attributes }: IProps) => {
                             </TableHeaderCell>
                         ))
                     }
-                    <TableHeaderCell key={"actions"} style={{ width: 30}} />
+
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -88,13 +79,7 @@ export const AuditAttributes = ({ attributes }: IProps) => {
                                         : attribute.newValue ?? "-"
                                     }
                                 </TableCell>
-                                <TableCell style={{ width: 30 }}>
-                                    <Button 
-                                        appearance="transparent"
-                                        icon={<ArrowUndo16Regular fontSize={16} />}
-                                        onClick={() => onRestore(attribute)} 
-                                    />
-                                </TableCell>
+                                
                             </TableRow>
                         ))
                     }

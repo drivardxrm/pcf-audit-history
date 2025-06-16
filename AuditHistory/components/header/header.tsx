@@ -1,13 +1,11 @@
-import { Button, Dropdown, Option, OptionOnSelectData, SelectionEvents } from "@fluentui/react-components";
+import { Button  } from "@fluentui/react-components";
 import * as React from "react";
 import Select, { ActionMeta, MultiValue, SingleValue, StylesConfig } from 'react-select'
 import { Attribute } from "../../interfaces/attributes";
-import { useContext, useMemo, useState } from "react";
-import { ArrowClockwiseRegular, ArrowSortDownLinesRegular, ArrowSortUpLinesRegular, Calendar16Regular } from '@fluentui/react-icons';
+import { useContext, useMemo } from "react";
+import { ArrowClockwiseRegular, ArrowSortDownLinesRegular, ArrowSortUpLinesRegular } from '@fluentui/react-icons';
 import { ControlContext } from "../../context/control-context";
 import { DatePicker } from 'antd';
-import * as dayjs from "dayjs";
-import { PickerLocale } from "antd/es/date-picker/generatePicker";
 import { isNullOrEmpty } from "../../utils/utils";
 
 interface IProps {

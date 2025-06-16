@@ -6,7 +6,6 @@ import {
   Button,
   Subtitle2,
 } from "@fluentui/react-components";
-import { ArrowUndo16Regular } from "@fluentui/react-icons";
 import {
   Card,
   CardHeader,
@@ -16,9 +15,6 @@ import { Audit } from "../../interfaces/audit";
 import { useContext } from "react";
 import { ControlContext } from "../../context/control-context";
 import { AuditAttributes } from "../table/table";
-import { useAudit } from "../../hooks/useAudit";
-import { Attribute } from "../../interfaces/attributes";
-import { useNavigation } from "../../hooks";
 import LookupField from "../lookup/lookup";
 
 const useStyles = makeStyles({
@@ -35,17 +31,10 @@ interface IProps {
 
 export const AuditCard = ({ audit }: IProps) => {
     const styles = useStyles();
-    const { context, formatting, resources } = useContext(ControlContext);
-    const { restoreChanges } = useAudit(context);
-    const { openConfirmationDialog } = useNavigation(context);
+    const {  formatting } = useContext(ControlContext);
 
-    const onRestoreAll = async (attributes: Attribute[]) => {
-        const isConfirmed = await openConfirmationDialog()
-        
-        if(isConfirmed) {
-            await restoreChanges(attributes)
-        } 
-    }
+
+
 
     return (
         <div style={{ width: '100%' }}>
@@ -73,17 +62,7 @@ export const AuditCard = ({ audit }: IProps) => {
                             </div>
                         }
                     />
-                    {
-                        audit.attributes && audit.attributes.length > 0 &&  (
-                            <Button 
-                                appearance="outline" 
-                                icon={<ArrowUndo16Regular fontSize={16} />}
-                                onClick={() => onRestoreAll(audit.attributes)}
-                            >
-                                {resources.getString("restore-all")}
-                            </Button>
-                        )
-                    }
+
                 </div>
                 {
                     audit.attributes && audit.attributes.length > 0 && (
